@@ -1,4 +1,4 @@
-# React_Ecommerce_Project
+# React_Ecommerce_Project - Lesson 01
 Creating our first component, homepage and adding scss to help us with writing our styles
 
 # After you fork and clone:
