@@ -1,5 +1,5 @@
-# React_Ecommerce_Project - Lesson 03
-Adding routing with react-router, then creating new routes for our existing homepage and our new hats page
+# React_Ecommerce_Project 
+This is the base (intial, starter) code for React Ecommerce Project. <b>You can find different codes for each lession from other branch of this repository.</b>
 
 # After you fork and clone:
 Install dependencies
