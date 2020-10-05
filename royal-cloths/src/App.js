@@ -69,8 +69,41 @@ const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 });
 
+/*
+  mapStateToProps?: (state, ownProps?) => Object
+  If a mapStateToProps function is specified, the new wrapper component will subscribe to Redux store updates. This means that any time the store is updated, mapStateToProps will be called. The results of mapStateToProps must be a plain object, which will be merged into the wrapped component’s props. If you don't want to subscribe to store updates, pass null or undefined in place of mapStateToProps
+
+  state - If your mapStateToProps function is declared as taking one parameter, it will be called whenever the store state changes, and given the store state as the only parameter.
+
+  eg: const mapStateToProps = state => ({ todos: state.todos })
+*/
+
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: (user) => dispatch(setCurrentUser(user))
 })
 
+/* 
+  mapDispatchToProps?: Object | (dispatch, ownProps?) => Object
+
+  Conventionally called mapDispatchToProps, this second parameter to connect() may either be an object, a function, or not supplied.
+*/
+
+/* 
+The mapDispatchToProps function will be called with dispatch as the first argument. You will normally make use of this by returning new functions that call dispatch() inside themselves, and either pass in a plain action object directly or pass in the result of an action creator.
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain actions
+    increment: () => dispatch({ type: 'INCREMENT' }),
+    decrement: () => dispatch({ type: 'DECREMENT' }),
+    reset: () => dispatch({ type: 'RESET' })
+  }
+}
+*/
+
+//The connect() function connects a React component to a Redux store.
+// It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// The mapStateToProps and mapDispatchToProps deals with your Redux store’s state and dispatch, respectively. state and dispatch will be supplied to your mapStateToProps or mapDispatchToProps functions as the first argument.
