@@ -1,4 +1,4 @@
-# React_Ecommerce_Project - Lesson 15
+# React_Ecommerce_Project - Lesson 16
 
 We have updated our cart redux files to handle adding an item, we have also connected it to our updated collection-item.
 
