@@ -1,6 +1,6 @@
 # React_Ecommerce_Project - Lesson 14
 
-Let's update our app so that after a user signs-in they are redirected to the home page, also if a user is signed into our application, we don't want them to be able to access the signinandsignup page.
+Let's update our app so that after a user signs-in they are redirected to the home page, also if a user is signed into our application, we don't want them to be able to access the signin and signup page.
 
 # After you fork and clone:
 Install dependencies
