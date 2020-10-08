@@ -4,6 +4,11 @@ const selectCart = (state) => state.cart;
 // a function which takes whole state just returns slice of it. in here it is cart
 // we have user, cart states in our main state object
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 export const selectCartItems = createSelector(
   [selectCart],
   (cart) => cart.cartItems

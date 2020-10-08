@@ -1,35 +1,35 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-import './App.css';
+import "./App.css";
 
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import Header from './components/header/header.component';
+import HomePage from "./pages/homepage/homepage.component";
+import ShopPage from "./pages/shop/shop.component";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import Header from "./components/header/header.component";
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends React.Component {
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-
     const { setCurrentUser } = this.props;
     //https://reactjs.org/docs/components-and-props.html
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const useRef = await createUserProfileDocument(userAuth);
 
-        useRef.onSnapshot(snapShot => {
+        useRef.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
-            ...snapShot.data()
-          })
+            ...snapShot.data(),
+          });
         });
       } else {
         setCurrentUser(userAuth);
@@ -40,7 +40,6 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
 
-
   render() {
     return (
       <div>
@@ -48,25 +47,31 @@ class App extends React.Component {
         <Switch>
           <React.Fragment>
             <div>
-              <Route exact path='/' component={HomePage} />
-              <Route path='/shop' component={ShopPage} />
+              <Route exact path="/" component={HomePage} />
+              <Route path="/shop" component={ShopPage} />
               {/* https://reactrouter.com/web/api/Redirect */}
-              {<Route path='/signin' render={() =>
-                this.props.currentUser
-                  ? (<Redirect to='/' />)
-                  : (<SignInAndSignUpPage />)}
-              />}
+              {
+                <Route
+                  path="/signin"
+                  render={() =>
+                    this.props.currentUser ? (
+                      <Redirect to="/" />
+                    ) : (
+                      <SignInAndSignUpPage />
+                    )
+                  }
+                />
+              }
             </div>
           </React.Fragment>
         </Switch>
       </div>
     );
   }
-
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 /*
@@ -78,9 +83,9 @@ const mapStateToProps = ({ user }) => ({
   eg: const mapStateToProps = state => ({ todos: state.todos })
 */
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user))
-})
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
 
 /* 
   mapDispatchToProps?: Object | (dispatch, ownProps?) => Object
