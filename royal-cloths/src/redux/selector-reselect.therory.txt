@@ -1,0 +1,34 @@
+What are Selectors?
+
+At their most simple, Selectors are simply functions that are used to select a subset data from a larger data collection.
+
+Selectors:
+1) Have knowledge of the whereabouts or path to find a particular subset of data and
+2) Return with the requested subset of data
+
+
+In code:
+A selector to retrieve belts from a store could look like this:
+const getBelts = (state) => state.items.belts
+
+
+Basic selectors (i.e simple functions that return a subset of data) are beneficial 
+
+01) because they encapsulate knowledge of where to find that particular subset of data, 
+02) they are also reusable and flexible (centerlized logics). 
+03) clean our components
+
+To see what I mean, let’s take a look at an example DisplayBelts.js component that isn’t using a selector to find belts.
+
+/ Select belts from the store without use of selectos
+class DisplayBelts extends React.Component {
+  render() {
+    return this.props.belts.map(belt => <img src={belt.imgUrl} />)
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    belts: state.items.belts
+  }
+}
