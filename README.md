@@ -1,4 +1,4 @@
-# React_Ecommerce_Project - Lesson 21
+# React_Ecommerce_Project - Lesson 22
 
 Design our single cart item and populated with data inside the cart page component.
 
