@@ -1,6 +1,6 @@
-# React_Ecommerce_Project - Lesson 24
+# React_Ecommerce_Project - Lesson 23
 
-We created update the quantity using two buttons to the left and right of the number, so we will add the appropriate code to do so.
+We have created a action and reducer to remove a cart item from the cart, also we bindded our action with remove button click.
 
 # After you fork and clone:
 Install dependencies
