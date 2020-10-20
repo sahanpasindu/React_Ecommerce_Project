@@ -13,7 +13,7 @@ const StripeCheckoutButton = ({ price }) => {
    return (
       <StripeCehckout
          label="Pay Now"
-         name="Royal Cloths"
+         name="Royal Clothes"
          billingAddress
          shippingAddress
          image="https://sendeyo.com/up/d/f3eb2117da"
