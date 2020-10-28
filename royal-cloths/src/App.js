@@ -48,19 +48,19 @@ class App extends React.Component {
         <Switch>
           <React.Fragment>
             <div>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/shop" component={ShopPage} />
-              <Route exact path="/checkout" component={CheckoutPage} />
-              {/* https://reactrouter.com/web/api/Redirect */}
+              <Route exact path="/" component={ HomePage } />
+              <Route path="/shop" component={ ShopPage } />
+              <Route exact path="/checkout" component={ CheckoutPage } />
+              {/* https://reactrouter.com/web/api/Redirect */ }
               {
                 <Route
                   path="/signin"
-                  render={() =>
+                  render={ () =>
                     this.props.currentUser ? (
                       <Redirect to="/" />
                     ) : (
-                      <SignInAndSignUpPage />
-                    )
+                        <SignInAndSignUpPage />
+                      )
                   }
                 />
               }
@@ -73,7 +73,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+  currentUser: selectCurrentUser
 });
 
 /*
